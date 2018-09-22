@@ -1,16 +1,15 @@
 import React, {Component} from "react";
 import Todo from "./Todo";
+//Connects components to the Redux store
+import {connect} from "react-redux";
 
-export default class TodoList extends Component {
+class TodoList extends Component {
   constructor (props){
     //Used incase we ever want to pass props down
     super(props);
-    this.state={
-      todos: ["Eat", "Sleep", "Go Home"]
-    };
   }
   render(){
-    let todos = this.state.todos.map((task, index) => (
+    let todos = this.props.todos.map((task, index) => (
     <Todo task={task} key={index} />
   ));
     return(
@@ -22,3 +21,13 @@ export default class TodoList extends Component {
     );
   }
 }
+
+//Brings Redux state into React component to be used as props - can be named anything but mapStateToProps is standard
+function mapStateToProps(reduxState){
+  return {
+    todos: reduxState.todos
+  };
+}
+
+//Connects Redux store to this React component - Move export default down, returns a function with our TodoList inside
+export default connect(mapStateToProps)(TodoList);
