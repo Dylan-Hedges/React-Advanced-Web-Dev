@@ -1,4 +1,4 @@
-//Imports consts from AC file - this is effective as if we chane the consts in the action creator file it changes everywhere
+//Imports consts from action creator file - this is effective as if we chane the consts in the action creator file it changes everywhere
 import {ADD_TODO, REMOVE_TODO} from "./actionCreators.js";
 
 
@@ -23,7 +23,5 @@ export default function rootReducer(state = initalState, action) {
       return {...state, todos};
     default:
       return state;
-
   }
-
 }
