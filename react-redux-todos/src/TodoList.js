@@ -10,6 +10,7 @@ class TodoList extends Component {
     //Method binding - binds method to component
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.removeTodo = this.removeTodo.bind(this);
     this.state={
       task: ""
     };
@@ -37,10 +38,19 @@ class TodoList extends Component {
       [e.target.name]: e.target.value
     });
   }
-
+  removeTodo(id){
+    this.props.dispatch({
+      type: "REMOVE_TODO",
+      id
+    });
+  }
+  //removeTodo - passes the removeToDo function to the todo as props
   render(){
     let todos = this.props.todos.map((val, index) => (
-    <Todo task={val.task} key={index} />
+    <Todo
+      removeTodo={this.removeTodo.bind(this, val.id)}
+      task={val.task}
+      key={index} />
   ));
     return(
       <div>
