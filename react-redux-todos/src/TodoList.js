@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Todo from "./Todo";
 //Connects components to the Redux store
 import {connect} from "react-redux";
+import {addTodo, removeTodo} from "./actionCreators";
 
 class TodoList extends Component {
   constructor (props){
@@ -20,10 +21,7 @@ class TodoList extends Component {
     //Stops page refreshing
     e.preventDefault();
     //Dispatches action
-    this.props.dispatch({
-      type: "ADD_TODO",
-      task: this.state.task
-    });
+    this.props.addTodo(this.state.task);
     //Resets entire form (previous method reset individually)
     e.target.reset();
     //Sets the field to blank after dispatching action
@@ -39,10 +37,7 @@ class TodoList extends Component {
     });
   }
   removeTodo(id){
-    this.props.dispatch({
-      type: "REMOVE_TODO",
-      id
-    });
+    this.props.removeTodo(id);
   }
   //removeTodo - passes the removeToDo function to the todo as props
   render(){
@@ -80,5 +75,7 @@ function mapStateToProps(reduxState){
   };
 }
 
+
+
 //Connects Redux store to this React component - Move export default down, returns a function with our TodoList inside
-export default connect(mapStateToProps)(TodoList);
+export default connect(mapStateToProps, {addTodo, removeTodo})(TodoList);
