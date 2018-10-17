@@ -9,6 +9,7 @@ import {createStore} from "redux";
 import rootReducer from "./rootReducer";
 //Connects React app with the Redux store - allows React components to dispatch actions, without only the store can dispatch actions
 import {Provider} from "react-redux";
+import {BrowserRouter} from "react-router-dom";
 
 //Create the store using the root reducer; "window..." - copied from redux devtools (zalmoxisus)
 const store = createStore(
@@ -19,7 +20,9 @@ const store = createStore(
 //<Provider store={store}> - connects React App with Store, wrap app using provider tags; store={store} specifies what store we are connecting to
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root'));
 registerServiceWorker();
