@@ -10,12 +10,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Welcome to the App!</h1>
-        <p>
-          <Link to="/todos">See my todos!</Link>
-        </p>
-        <p>
-          <Link to="/todos/new">Add a todo!</Link>
-        </p>
+        <p><Link to="/todos">See my todos!</Link></p>
+        <p><Link to="/todos/new">Add a todo!</Link></p>
         <Route path="/todos" component = {TodoList}/>
         <Route exact path="/" render={() => <Redirect to="/todos"/>} />
       </div>

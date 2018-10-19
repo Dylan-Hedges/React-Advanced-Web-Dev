@@ -17,7 +17,7 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-//<Provider store={store}> - connects React App with Store, wrap app using provider tags; store={store} specifies what store we are connecting to
+//<Provider store={store}> - connects React and Redux, connects React App to Redux Store, wrap app using provider tags; store={store} specifies what store we are connecting to; <BrowserRouter> - Connects React Router to our app
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
