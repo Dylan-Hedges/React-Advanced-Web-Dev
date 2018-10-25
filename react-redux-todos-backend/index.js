@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-const todoRoute = require("./routes/todos");
+const todoRoutes = require("./routes/todos");
 
 app.use(morgan("tiny"));
 app.use(bodyParser.json());
@@ -14,6 +14,7 @@ app.use(function(req, res, next){
   let err = new Error("Not Found");
   err.status = 404;
   next(err);
+});
 
 app.use(function(err, req, res, next){
   res.status(err.status || 500);
@@ -24,5 +25,5 @@ app.use(function(err, req, res, next){
 });
 
 app.listen(3001, function(){
-  console.log("Server starting on port 3001");
+  console.log("Server starting on port 3001")
 })

@@ -1,7 +1,7 @@
 //Brings in Mongoose
 const mongoose = require("mongoose");
 //Connects to Mongoose
-mongoose.connect("mongodb://localhost/todos-backend");
+mongoose.connect("mongodb://localhost/todos-backend", { useNewUrlParser: true });
 //Log Mongo queries for debugging
 mongoose.set("debug", true);
 //Use ES2015 promises
