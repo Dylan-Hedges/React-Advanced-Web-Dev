@@ -3,7 +3,8 @@ import Todo from "./Todo";
 import NewToDoForm from "./NewToDoForm";
 //Connects components to the Redux store
 import {connect} from "react-redux";
-import {addTodo, removeTodo} from "./actionCreators";
+//Thunks - asynchronous action creators that return a function
+import {addTodo, removeTodo, getTodos} from "./actionCreators";
 import {Route} from "react-router-dom";
 
 //Connected to Redux (a container)
@@ -51,4 +52,4 @@ function mapStateToProps(reduxState){
 
 
 //Connects Redux store to this React component - Move export default down, returns a function with our TodoList inside
-export default connect(mapStateToProps, {addTodo, removeTodo})(TodoList);
+export default connect(mapStateToProps, {addTodo, removeTodo}, getTodos)(TodoList);
